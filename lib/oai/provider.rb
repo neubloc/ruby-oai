@@ -253,6 +253,7 @@ module OAI::Provider
     Base.sample_id '13900'
 
     Base.register_format(OAI::Provider::Metadata::DublinCore.instance)
+    Base.register_format(OAI::Provider::Metadata::DublinCoreMarc.instance)
 
     # Equivalent to '&verb=Identify', returns information about the repository
     def identify(options = {})

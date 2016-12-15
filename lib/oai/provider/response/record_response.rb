@@ -49,7 +49,7 @@ module OAI::Provider::Response
     private
 
     def identifier_for(record)
-      "#{provider.prefix}/#{record.id}"
+      "#{provider.prefix}:#{record.record_number}"
     end
 
     def timestamp_for(record)
