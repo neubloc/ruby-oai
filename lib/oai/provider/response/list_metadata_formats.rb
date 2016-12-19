@@ -30,8 +30,7 @@ module OAI::Provider::Response
     end
     
     def record_supports(record, prefix)
-      prefix == 'oai_dc' or
-      prefix == 'marc21' or 
+      prefix == 'oai_dc' or      
       record.respond_to?("to_#{prefix}") or
       record.respond_to?("map_#{prefix}")
     end

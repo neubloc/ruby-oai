@@ -33,19 +33,15 @@ module OAI
     end
     def response
       @builder = Builder::XmlMarkup.new
-      @builder.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"      
+      @builder.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
       @builder.tag!('OAI-PMH', header) do
         @builder.responseDate Time.now.utc.xmlschema
-        @builder.request(provider.url, request_attributes)
+        @builder.request(provider.url, (@request_options.merge(:verb => verb) unless self.class == Error))
         yield @builder
       end
     end
     private
 
-    def request_attributes
-      req = @request_options.merge(:verb => verb).to_json unless self.class == Error
-      req.nil? ? '' : JSON.parse(req)
-    end
     def header
       {
         'xmlns' => "http://www.openarchives.org/OAI/2.0/",

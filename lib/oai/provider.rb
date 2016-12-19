@@ -252,8 +252,7 @@ module OAI::Provider
     Base.update_granularity OAI::Const::Granularity::HIGH
     Base.sample_id '13900'
 
-    Base.register_format(OAI::Provider::Metadata::DublinCore.instance)
-    Base.register_format(OAI::Provider::Metadata::DublinCoreMarc.instance)
+    Base.register_format(OAI::Provider::Metadata::DublinCore.instance)    
 
     # Equivalent to '&verb=Identify', returns information about the repository
     def identify(options = {})
